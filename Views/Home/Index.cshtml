@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Task_Alocator.Models.User>
+@{
+    //ViewData["Title"] = "Список смартфонов";
+
+
+
+    Layout = null;
+}
+
+<html>
+<head>
+    <title>События</title>
+</head>
+<body>
+
+    <h3>Добавить пользователя</h3>
+    <form method="post">
+        <table>
+            <tr>
+                <td>Имя:</td>
+                <td><input type="text" name="Name" /> </td>
+            </tr>
+            <tr><td><input type="submit" value="Добавить" /> </td><td></td></tr>
+        </table>
+    </form>
+
+
+    <h3>Пользователи</h3>
+    <table>
+        <tr>
+            <td>UserId</td>
+            <td>Имя</td>
+            <td></td>
+        
+            @foreach (var user in Model)
+            {
+            <tr>
+                <td>@user.UserId</td>
+                <td>@user.Name</td>
+                <td><a href="~/Home/AddEvent/@user.UserId">Перейти к событиям пользователя</a></td>
+            </tr>
+            }
+
+    </table>
+</body>
+</html>

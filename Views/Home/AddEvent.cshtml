@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Task_Alocator.Models.Event>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>События</title>
+</head>
+<body>
+    <div>
+        <h3>Добавить событие </h3>
+        <form method="post">
+            <input type="hidden" value="@ViewBag.UserId" name="UserId" />
+            <table>
+                <tr>
+                    <td>Дата:</td>
+                    <td><input type="date" name="Date" /> </td>
+                    <td>Описание:</td>
+                    <td><input type="text" name="Description" /> </td>
+                </tr>
+                <tr><td><input type="submit" value="Отправить" /> </td><td></td></tr>
+            </table>
+        </form>
+    </div>
+
+    <h3>Пользователи</h3>
+    <table>
+        <tr>
+            <td>EventId</td>
+            <td>Date</td>
+            <td>Description</td>
+            <td></td>
+
+            @foreach (var event_ in Model)
+            {
+                @if (event_.UserId == ViewBag.UserId)
+                {
+                <tr>
+                    <td>@event_.EventId</td>
+                    <td>@event_.Date</td>
+                    <td>@event_.Description</td>
+                    <td>@event_.UserId</td>
+                </tr>
+                }
+        }
+
+        </table>
+
+    </body>
+</html>

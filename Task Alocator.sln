@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31613.86
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task Alocator", "Task Alocator.csproj", "{A551A671-DCFD-42C3-81A1-4A059C1B3638}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A551A671-DCFD-42C3-81A1-4A059C1B3638}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A551A671-DCFD-42C3-81A1-4A059C1B3638}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A551A671-DCFD-42C3-81A1-4A059C1B3638}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A551A671-DCFD-42C3-81A1-4A059C1B3638}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {073CDEBA-AFC3-4A1E-B559-C1B73D5193C6}
+	EndGlobalSection
+EndGlobal
