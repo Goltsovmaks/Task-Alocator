@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Task_Alocator.Models.Event>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>События</title>
+</head>
+<body>
+    <div>
+        <h3>Добавить событие </h3>
+        <form method="post">
+            <input type="hidden" value="@ViewBag.UserId" name="UserId" />
+            <input type="checkbox" name="is_mixed" value="true" checked> Разрешить наложение события на существующие.
+            <div>
+                Дата начала: <input type="date" name="DateBegin"/>
+                Дата конца:  <input type="date" name="DateEnd" />
+                <div> <br>Или выбрать подходящие даты автоматически <br></div>
+                <div>
+                    Дата начала поиска: <input type="date" name="date_to_start" />
+                    Продолжительность (дней)<input type="number" name="duration" onkeypress="return event.charCode >= 48" min="0">
+                </div>
+                <div>Описание:</div>
+                    <input type="text" name="Description"/>
+                <br/>
+                <input type="submit" value="Отправить"/>
+            </div>
+        </form>
+    </div>
+
+    <h3>События</h3>
+    <table>
+        <tr>
+            <td>EventId</td>
+            <td>DateBegin</td>
+            <td>DateEnd</td>
+            <td>Description</td>
+            <td>UserId</td>
+            <td></td>
+
+            @foreach (var event_ in Model)
+            {
+                @if (event_.UserId == ViewBag.UserId)
+                {
+                <tr>
+                    <td>@event_.EventId</td>
+                    <td>@event_.DateBegin</td>
+                    <td>@event_.DateEnd</td>
+                    <td>@event_.Description</td>
+                    <td>@event_.UserId</td>
+                    <td><a href="~/Home/ManageEvent/?user_id=@event_.UserId&event_to_remove=@event_.EventId">Удалить</a></td>
+                    <td><a href="~/Home/EditEvent/?event_id=@event_.EventId">Редактировать</a></td>
+                
+                </tr>
+            }
+            }
+
+        </table>
+
+    </body>
+</html>

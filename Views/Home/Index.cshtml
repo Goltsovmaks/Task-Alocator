@@ -1,9 +1,5 @@
 ﻿@model IEnumerable<Task_Alocator.Models.User>
 @{
-    //ViewData["Title"] = "Список смартфонов";
-
-
-
     Layout = null;
 }
 
@@ -37,7 +33,7 @@
             <tr>
                 <td>@user.UserId</td>
                 <td>@user.Name</td>
-                <td><a href="~/Home/AddEvent/@user.UserId">Перейти к событиям пользователя</a></td>
+                <td><a href="~/Home/ManageEvent/?user_id=@user.UserId&event_to_remove=-1">Перейти к событиям пользователя</a></td>
             </tr>
             }
 

@@ -11,6 +11,10 @@ using System.Threading.Tasks;
 using Task_Alocator.Models;   // пространство имен моделей
 using Microsoft.EntityFrameworkCore; // пространство имен EntityFramework
 
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Formatters;
+using Microsoft.Extensions.Options;
+
 namespace Task_Alocator
 {
     public class Startup
@@ -28,11 +32,34 @@ namespace Task_Alocator
             string connection = Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<EventContext>(options => options.UseSqlServer(connection));
             services.AddControllersWithViews();
+            services.AddControllersWithViews().AddNewtonsoftJson();
+
         }
+
+
+
+        private static NewtonsoftJsonPatchInputFormatter GetJsonPatchInputFormatter()
+        {
+
+            var builder = new ServiceCollection()
+                .AddLogging()
+                .AddMvc()
+                .AddNewtonsoftJson()
+                .Services.BuildServiceProvider();
+
+            return builder
+                .GetRequiredService<IOptions<MvcOptions>>()
+                .Value
+                .InputFormatters
+                .OfType<NewtonsoftJsonPatchInputFormatter>()
+                .First();
+        }
+
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

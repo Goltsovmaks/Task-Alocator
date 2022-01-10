@@ -1,0 +1,37 @@
+﻿@model Task_Alocator.Models.Event
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Редактировать событие</title>
+</head>
+<body>
+    <div>
+        <h3>Редактировать событие </h3>
+        <form method="post">
+            <input type="hidden" value="@Model.UserId" name="UserId" />
+            <input type="hidden" value="@Model.EventId" name="EventId" />
+
+            <input type="checkbox" name="is_mixed" value="true" checked> Разрешить наложение события на существующие.
+            <div>
+                <span asp-validation-for="EventId"></span>
+                <br /><br />
+            </div>
+            <table>
+                <tr>
+                    <td>Дата начала:</td>
+                    <td><input type="datetime" name="DateBegin" value=@Model.DateBegin /> </td>
+                    <td>Дата конца:</td>
+                    <td><input type="datetime" name="DateEnd" value=@Model.DateEnd /> </td>
+                    <td>Описание:</td>
+                    <td><input type="text" name="Description" value="@Model.Description" /> </td>
+                </tr>
+                <tr><td><input type="submit" value="Отправить" /> </td><td></td></tr>
+            </table>
+        </form>
+    </div>
+    </body>
+</html>
