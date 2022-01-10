@@ -54,6 +54,12 @@ namespace Task_Alocator.Controllers
         [HttpPost]
         public string ManageEvent(Event event_record, bool is_mixed, DateTime date_to_start, int duration)
         {
+            if (event_record.DateBegin > event_record.DateEnd)
+            {
+                return "Дата окончания, меньше даты начала";
+            }
+
+
             if (!is_mixed) //запрет за наложение
             {
                 if (duration == 0) //способ задания даты = интервал [dateBegin,dateEnd]
@@ -129,6 +135,14 @@ namespace Task_Alocator.Controllers
          [HttpPost]
          public IActionResult EditEvent(Event event_record, bool is_mixed)
          {
+
+            if (event_record.DateBegin > event_record.DateEnd)
+            {
+                ModelState.AddModelError("DateEnd", "Дата окончания, меньше даты начала");
+                return View(event_record);
+            }
+
+
             if (!is_mixed) //поставили запрет на нлаожение
             {
                 //Дублирование кода!!!
